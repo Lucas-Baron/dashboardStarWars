@@ -7,12 +7,22 @@
     font-family: 'Roboto', sans-serif;
 }
 
+:root{
+    --color-black: #000;
+    --color-white: #f5f6fa;
+    --color-yeloow: #ffba33;
+}
+
 ul{
     list-style: none;
 }
 
+.container{
+    display: flex;
+}
+
 .lateral-menu{
-    background-color: #000;
+    background-color: var(--color-black);
     width: 250px;
     height: 100%;
     color: white;
@@ -52,4 +62,76 @@ ul{
 
 .config p{
     margin-left: 8px;
+}
+
+
+
+/*====== Menu Top ======*/
+.content{
+    background-color: var(--color-white);
+    width: 100%;
+}
+
+.card-header{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card{
+    background-color: white;
+    border-radius: 16px;
+    box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.25);
+
+    margin: 0 20px;
+    height: 132px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.card-small{
+    width: 240px;
+}
+
+.card-large{
+    width: 464px;
+}
+
+.card .card-content{
+    width: 80%;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+}
+
+.card .card-container{
+    display: flex;
+    width: 80%;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-info h2{
+    font-size: 54px;
+    font-weight: 900;
+    color: var(--color-yeloow);
+}
+
+.card-info p{
+    font-size: 16px;
+}
+
+.card-large .card-container .card-content:first-child{
+    border-right: 1px solid var(--color-black);
 }
