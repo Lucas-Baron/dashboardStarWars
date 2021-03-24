@@ -23,13 +23,18 @@
   })
   }
 
-  function preencherTabela(){
-    const response = await swapiGet('files/')
+  async function preencherTabela(){
+    const response = await swapiGet('films/')
     const tableData = response.data.results
     console.log(tableData)
 
-    tableData.forEach(film => {      
-       $('#filmsTable').apend('<tr><td> Filme 1 </td></tr>')
+    tableData.forEach((film) => {      
+       $('#filmsTable').append(`<tr>
+            <td> ${film.title} </td>
+            <td> ${moment(film.release_date).format('DD/MM/YYYY')} </td>
+            <td> ${film.director} </td>
+            <td> ${film.episode_id} </td>
+        </tr>`)
     })
   }
 
