@@ -6,6 +6,30 @@
   preencherContadores()
   preencherTabela()
 
+  google.charts.load('current', {'packages':['corechart']})
+  google.charts.setOnLoadCallback(drawChart)
+
+      async function drawChart() {
+        const response = await swapiGet('vehicles/')
+        const vehiclesArray = response.data.results
+       
+        const dataArray = []
+        dataArray.push(['Veículos', 'Passageiros'])
+        vehiclesArray.forEach((vehicle) => {
+          dataArray.push([vehicle.name, Number(vehicle.passengers)])
+        })
+
+        var data = google.visualization.arrayToDataTable(dataArray)
+
+        var options = {
+          title: 'Maiores veículos',
+          length: "none"
+        }
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'))
+
+        chart.draw(data, options)
+      }
   
   function preencherContadores() {
     Promise.all([swapiGet('people/'), 
@@ -45,26 +69,4 @@
 
 
 //---------------------------------------
-  google.charts.load('current', {'packages':['corechart']})
-  google.charts.setOnLoadCallback(drawChart)
-
-      async function drawChart() {
-        const response = await swapiGet('vehicles/')
-        const vehiclesArray = response.data.results
-       
-        const dataArray = []
-        dataArray.push(['Veículos', 'Passageiros'])
-        vehiclesArray.forEach((vehicle) => {
-          dataArray.push([vehicle.name, Number(vehicle.passengers)])
-        })
-
-        var data = google.visualization.arrayToDataTable([ dataArray ])
-
-        var options = {
-          title: 'My Daily Activities'
-        }
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'))
-
-        chart.draw(data, options)
-      }
+  
